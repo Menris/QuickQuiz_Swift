@@ -14,6 +14,15 @@
 		84D578C91E5E10C100D85D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D578C71E5E10C100D85D2B /* LaunchScreen.storyboard */; };
 		84D578D41E5E10C100D85D2B /* QuickQuiz_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D578D31E5E10C100D85D2B /* QuickQuiz_SwiftTests.swift */; };
 		84D578DF1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D578DE1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.swift */; };
+		84D578F11E5E11E000D85D2B /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578ED1E5E11E000D85D2B /* FirebaseAnalytics.framework */; };
+		84D578F21E5E11E000D85D2B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578EE1E5E11E000D85D2B /* FirebaseCore.framework */; };
+		84D578F31E5E11E000D85D2B /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578EF1E5E11E000D85D2B /* FirebaseInstanceID.framework */; };
+		84D578F41E5E11E000D85D2B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */; };
+		84E21B7E1E5EA98E0012F73F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */; };
+		84E21B801E5EC1A90012F73F /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */; };
+		84E21B831E5EC4090012F73F /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E21B811E5EC4090012F73F /* FirebaseAuth.framework */; };
+		84E21B841E5EC4090012F73F /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */; };
+		84E21B861E5EEA660012F73F /* StartingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E21B851E5EEA660012F73F /* StartingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +56,17 @@
 		84D578DA1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickQuiz_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D578DE1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickQuiz_SwiftUITests.swift; sourceTree = "<group>"; };
 		84D578E01E5E10C100D85D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84D578ED1E5E11E000D85D2B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		84D578EE1E5E11E000D85D2B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		84D578EF1E5E11E000D85D2B /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		84D578F51E5E123B00D85D2B /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		84D578F61E5E130F00D85D2B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		84E21B811E5EC4090012F73F /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
+		84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		84E21B851E5EEA660012F73F /* StartingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D578F21E5E11E000D85D2B /* FirebaseCore.framework in Frameworks */,
+				84D578F41E5E11E000D85D2B /* GoogleToolboxForMac.framework in Frameworks */,
+				84E21B831E5EC4090012F73F /* FirebaseAuth.framework in Frameworks */,
+				84D578F31E5E11E000D85D2B /* FirebaseInstanceID.framework in Frameworks */,
+				84E21B841E5EC4090012F73F /* GTMSessionFetcher.framework in Frameworks */,
+				84D578F11E5E11E000D85D2B /* FirebaseAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +107,7 @@
 				84D578D21E5E10C100D85D2B /* QuickQuiz_SwiftTests */,
 				84D578DD1E5E10C100D85D2B /* QuickQuiz_SwiftUITests */,
 				84D578BC1E5E10C000D85D2B /* Products */,
+				84D578EC1E5E11AB00D85D2B /* Firebase */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,10 +124,15 @@
 		84D578BD1E5E10C000D85D2B /* QuickQuiz_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				84D578F51E5E123B00D85D2B /* Firebase.h */,
 				84D578BE1E5E10C000D85D2B /* AppDelegate.swift */,
 				84D578C01E5E10C000D85D2B /* ViewController.swift */,
+				84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */,
+				84E21B851E5EEA660012F73F /* StartingViewController.swift */,
 				84D578C21E5E10C100D85D2B /* Main.storyboard */,
 				84D578C51E5E10C100D85D2B /* Assets.xcassets */,
+				84D578F61E5E130F00D85D2B /* module.modulemap */,
+				84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */,
 				84D578C71E5E10C100D85D2B /* LaunchScreen.storyboard */,
 				84D578CA1E5E10C100D85D2B /* Info.plist */,
 			);
@@ -123,6 +155,19 @@
 				84D578E01E5E10C100D85D2B /* Info.plist */,
 			);
 			path = QuickQuiz_SwiftUITests;
+			sourceTree = "<group>";
+		};
+		84D578EC1E5E11AB00D85D2B /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				84E21B811E5EC4090012F73F /* FirebaseAuth.framework */,
+				84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */,
+				84D578ED1E5E11E000D85D2B /* FirebaseAnalytics.framework */,
+				84D578EE1E5E11E000D85D2B /* FirebaseCore.framework */,
+				84D578EF1E5E11E000D85D2B /* FirebaseInstanceID.framework */,
+				84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */,
+			);
+			name = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D578C91E5E10C100D85D2B /* LaunchScreen.storyboard in Resources */,
+				84E21B7E1E5EA98E0012F73F /* GoogleService-Info.plist in Resources */,
 				84D578C61E5E10C100D85D2B /* Assets.xcassets in Resources */,
 				84D578C41E5E10C100D85D2B /* Main.storyboard in Resources */,
 			);
@@ -256,7 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E21B801E5EC1A90012F73F /* RegistrationViewController.swift in Sources */,
 				84D578C11E5E10C000D85D2B /* ViewController.swift in Sources */,
+				84E21B861E5EEA660012F73F /* StartingViewController.swift in Sources */,
 				84D578BF1E5E10C000D85D2B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +447,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = QuickQuiz_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ad.QuickQuiz-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/QuickQuiz_Swift\"";
 			};
 			name = Debug;
 		};
@@ -410,10 +464,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = QuickQuiz_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ad.QuickQuiz-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/QuickQuiz_Swift\"";
 			};
 			name = Release;
 		};
@@ -484,6 +544,7 @@
 				84D578E51E5E10C100D85D2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84D578E61E5E10C100D85D2B /* Build configuration list for PBXNativeTarget "QuickQuiz_SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +553,7 @@
 				84D578E81E5E10C100D85D2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84D578E91E5E10C100D85D2B /* Build configuration list for PBXNativeTarget "QuickQuiz_SwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +562,7 @@
 				84D578EB1E5E10C100D85D2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
