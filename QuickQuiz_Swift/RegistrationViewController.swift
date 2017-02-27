@@ -9,16 +9,22 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegistrationViewController: UIViewController {
+    
 
+    var ref: FIRDatabaseReference!
+    
+    
     @IBOutlet weak var Username: UITextField!
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var Password: UITextField!
+    @IBOutlet weak var GroupName: UITextField!
+    var Role = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -27,6 +33,14 @@ class RegistrationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func studentSelect(sender: AnyObject) {
+        Role = "students"
+        print ("Student")
+    }
+    @IBAction func teacherSelect(sender: AnyObject) {
+        Role = "teachers"
+        print ("Teacher")
+    }
     @IBAction func createUser(sender: AnyObject) {
         
         FIRAuth.auth()?.createUserWithEmail(Email.text!, password: Password.text!, completion: {
@@ -35,12 +49,20 @@ class RegistrationViewController: UIViewController {
                 print("Failed")
             }
             else {
+                self.ref = FIRDatabase.database().reference()
+                let user = FIRAuth.auth()?.currentUser?.uid
+                self.ref.child("userInformation").child(user!).setValue([   "name": self.Username.text!,
+                                                                            "group": self.GroupName.text!,
+                                                                            "role": self.Role,
+                                                                            "email": self.Email.text!])
                 print("User Created")
             }
         })
         
     }
 
+    @IBAction func registerUser(sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 

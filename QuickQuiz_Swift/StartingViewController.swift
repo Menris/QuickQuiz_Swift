@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class StartingViewController: UIViewController {
 
@@ -22,6 +24,19 @@ class StartingViewController: UIViewController {
     }
     
 
+    @IBAction func signOut(sender: AnyObject) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+            
+        } catch let signOutError as NSError {
+            print("Error Signing out : %@", signOutError)
+        }
+    }
     /*
     // MARK: - Navigation
 
