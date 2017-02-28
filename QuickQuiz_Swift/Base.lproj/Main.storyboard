@@ -121,11 +121,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter PIN number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEV-2H-e72">
-                                <rect key="frame" x="20" y="203" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASg-5S-Zr0">
                                 <rect key="frame" x="265" y="57" width="70" height="30"/>
                                 <state key="normal" title="Sign Out"/>
@@ -137,9 +132,14 @@
                                 <rect key="frame" x="274" y="285" width="53" height="30"/>
                                 <state key="normal" title="ENTER"/>
                                 <connections>
-                                    <segue destination="quE-jf-1sq" kind="show" id="xcv-so-NYl"/>
+                                    <action selector="goQuiz:" destination="TrS-rh-AZc" eventType="touchUpInside" id="Crx-Qg-D79"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter PIN number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEV-2H-e72">
+                                <rect key="frame" x="20" y="203" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -175,6 +175,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="PIN" destination="jEV-2H-e72" id="C2T-V3-Ncu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jB9-0z-a0p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,7 +186,7 @@
         <!--Quiz View Controller-->
         <scene sceneID="Z6V-EZ-6gX">
             <objects>
-                <viewController id="quE-jf-1sq" customClass="QuizViewController" customModule="QuickQuiz_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuizViewController" id="quE-jf-1sq" customClass="QuizViewController" customModule="QuickQuiz_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yhe-s1-fRc"/>
                         <viewControllerLayoutGuide type="bottom" id="3CN-PQ-Txs"/>
@@ -198,34 +201,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdR-AA-Ybr" customClass="DLRadioButton">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="YdR-AA-Ybr" customClass="DLRadioButton">
                                 <rect key="frame" x="20" y="277" width="270" height="125"/>
                                 <color key="backgroundColor" red="0.63960080969999999" green="0.64730259140000002" blue="0.65311316289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="A"/>
                                 <connections>
+                                    <action selector="clickA:" destination="quE-jf-1sq" eventType="touchUpInside" id="ool-hu-5nX"/>
                                     <outletCollection property="otherButtons" destination="oQC-Zq-eVS" id="ha9-a6-JgY"/>
                                     <outletCollection property="otherButtons" destination="P41-7p-xNj" id="DGU-uc-uWd"/>
                                     <outletCollection property="otherButtons" destination="juf-Gt-wbD" id="JgL-UB-o7t"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P41-7p-xNj" customClass="DLRadioButton">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-Zq-eVS" customClass="DLRadioButton">
+                                <rect key="frame" x="310" y="277" width="270" height="125"/>
+                                <color key="backgroundColor" red="0.63960080969999999" green="0.64730259140000002" blue="0.65311316289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B"/>
+                                <connections>
+                                    <action selector="clickB:" destination="quE-jf-1sq" eventType="touchUpInside" id="KJf-Rj-RsA"/>
+                                    <outletCollection property="otherButtons" destination="YdR-AA-Ybr" id="fLD-oP-3UJ"/>
+                                    <outletCollection property="otherButtons" destination="P41-7p-xNj" id="PBZ-0q-PHC"/>
+                                    <outletCollection property="otherButtons" destination="juf-Gt-wbD" id="uig-bk-o9m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="P41-7p-xNj" customClass="DLRadioButton">
                                 <rect key="frame" x="20" y="410" width="270" height="125"/>
                                 <color key="backgroundColor" red="0.6396008097381688" green="0.64730259142986057" blue="0.65311316287878785" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="C"/>
                                 <connections>
+                                    <action selector="clickC:" destination="quE-jf-1sq" eventType="touchUpInside" id="Bz4-ej-NBm"/>
                                     <outletCollection property="otherButtons" destination="YdR-AA-Ybr" id="BSR-q0-gSr"/>
                                     <outletCollection property="otherButtons" destination="oQC-Zq-eVS" id="nXR-Hw-zax"/>
                                     <outletCollection property="otherButtons" destination="juf-Gt-wbD" id="IwU-dh-wuc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juf-Gt-wbD" customClass="DLRadioButton">
-                                <rect key="frame" x="310" y="410" width="270" height="125"/>
-                                <color key="backgroundColor" red="0.63960080969999999" green="0.64730259140000002" blue="0.65311316289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="D"/>
-                                <connections>
-                                    <outletCollection property="otherButtons" destination="YdR-AA-Ybr" id="Ujt-h1-vIb"/>
-                                    <outletCollection property="otherButtons" destination="oQC-Zq-eVS" id="UHA-we-sbd"/>
-                                    <outletCollection property="otherButtons" destination="P41-7p-xNj" id="ZLc-wo-ub4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5T-1N-f1B">
@@ -237,6 +244,9 @@
                                     <constraint firstAttribute="width" constant="560" id="rae-RX-Q98"/>
                                 </constraints>
                                 <state key="normal" title="Next Question"/>
+                                <connections>
+                                    <action selector="goNextQuestion:" destination="quE-jf-1sq" eventType="touchUpInside" id="ylK-lb-78z"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" text="question" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgT-WR-C99">
                                 <rect key="frame" x="18" y="59" width="565" height="210"/>
@@ -245,17 +255,18 @@
                                     <constraint firstAttribute="height" constant="210" id="1rY-oO-eSA"/>
                                     <constraint firstAttribute="width" constant="565" id="48f-rW-WnA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-Zq-eVS" customClass="DLRadioButton">
-                                <rect key="frame" x="310" y="277" width="270" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="juf-Gt-wbD" customClass="DLRadioButton">
+                                <rect key="frame" x="310" y="410" width="270" height="125"/>
                                 <color key="backgroundColor" red="0.63960080969999999" green="0.64730259140000002" blue="0.65311316289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="B"/>
+                                <state key="normal" title="D"/>
                                 <connections>
-                                    <outletCollection property="otherButtons" destination="YdR-AA-Ybr" id="fLD-oP-3UJ"/>
-                                    <outletCollection property="otherButtons" destination="P41-7p-xNj" id="PBZ-0q-PHC"/>
-                                    <outletCollection property="otherButtons" destination="juf-Gt-wbD" id="uig-bk-o9m"/>
+                                    <action selector="clickD:" destination="quE-jf-1sq" eventType="touchUpInside" id="SNA-ep-UZB"/>
+                                    <outletCollection property="otherButtons" destination="YdR-AA-Ybr" id="Ujt-h1-vIb"/>
+                                    <outletCollection property="otherButtons" destination="oQC-Zq-eVS" id="UHA-we-sbd"/>
+                                    <outletCollection property="otherButtons" destination="P41-7p-xNj" id="ZLc-wo-ub4"/>
                                 </connections>
                             </button>
                         </subviews>

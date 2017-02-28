@@ -11,10 +11,13 @@ import Firebase
 import FirebaseAuth
 
 class StartingViewController: UIViewController {
+    
 
+    @IBOutlet weak var PIN: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        animateBackground()
         // Do any additional setup after loading the view.
     }
 
@@ -23,6 +26,14 @@ class StartingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func animateBackground() {
+        UIView.animateWithDuration(5.0, delay: 0.0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
+            self.view.backgroundColor = UIColor.blackColor()
+            self.view.backgroundColor = UIColor.greenColor()
+            self.view.backgroundColor = UIColor.yellowColor()
+            self.view.backgroundColor = UIColor.redColor()
+            }, completion: nil)
+    }
 
     @IBAction func signOut(sender: AnyObject) {
         let firebaseAuth = FIRAuth.auth()
@@ -36,6 +47,15 @@ class StartingViewController: UIViewController {
         } catch let signOutError as NSError {
             print("Error Signing out : %@", signOutError)
         }
+    }
+    
+    @IBAction func goQuiz(sender: AnyObject) {
+        print("PIN is", PIN.text!)
+        let pinController = storyboard?.instantiateViewControllerWithIdentifier("QuizViewController") as! QuizViewController
+        pinController.passedPIN = PIN.text!
+        
+        navigationController?.pushViewController(pinController, animated: true)
+        presentViewController(pinController, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

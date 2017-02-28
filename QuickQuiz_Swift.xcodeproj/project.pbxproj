@@ -132,13 +132,13 @@
 		84D578BD1E5E10C000D85D2B /* QuickQuiz_Swift */ = {
 			isa = PBXGroup;
 			children = (
-				84D578F51E5E123B00D85D2B /* Firebase.h */,
 				84D578BE1E5E10C000D85D2B /* AppDelegate.swift */,
 				84D578C01E5E10C000D85D2B /* ViewController.swift */,
 				84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */,
 				84E21B851E5EEA660012F73F /* StartingViewController.swift */,
 				84EDC75F1E63FBE00081CB9D /* QuizViewController.swift */,
 				84D578C21E5E10C100D85D2B /* Main.storyboard */,
+				84D578F51E5E123B00D85D2B /* Firebase.h */,
 				84EDC75A1E6019F40081CB9D /* DLRadioButton.h */,
 				84EDC75B1E6019F40081CB9D /* DLRadioButton.m */,
 				84D578C51E5E10C100D85D2B /* Assets.xcassets */,
