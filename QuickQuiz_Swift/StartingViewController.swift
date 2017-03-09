@@ -14,10 +14,17 @@ class StartingViewController: UIViewController {
     
 
     @IBOutlet weak var PIN: UITextField!
+    @IBOutlet weak var appTitle: UILabel!
+    
+    var backgroundColors = [UIColor()]
+    var backgroundLoop = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        animateBackground()
+        
+        backgroundColors = [UIColor.redColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.greenColor()]
+        backgroundLoop = 0
+        self.animateBackground()
         // Do any additional setup after loading the view.
     }
 
@@ -27,12 +34,18 @@ class StartingViewController: UIViewController {
     }
     
     func animateBackground() {
-        UIView.animateWithDuration(5.0, delay: 0.0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
-            self.view.backgroundColor = UIColor.blackColor()
-            self.view.backgroundColor = UIColor.greenColor()
-            self.view.backgroundColor = UIColor.yellowColor()
-            self.view.backgroundColor = UIColor.redColor()
-            }, completion: nil)
+        if backgroundLoop < backgroundColors.count - 1 {
+            backgroundLoop++
+        } else {
+            backgroundLoop = 0
+        }
+        
+        UIView.animateWithDuration(2.5, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
+            self.view.backgroundColor = self.backgroundColors[self.backgroundLoop]
+            }) {(Bool) -> Void in
+                self.animateBackground()
+        }
+        
     }
 
     @IBAction func signOut(sender: AnyObject) {
@@ -40,7 +53,7 @@ class StartingViewController: UIViewController {
         do {
             try firebaseAuth?.signOut()
             
-            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MainNavigationController") as! UINavigationController
             
             self.presentViewController(controller, animated: true, completion: nil)
             
@@ -52,10 +65,19 @@ class StartingViewController: UIViewController {
     @IBAction func goQuiz(sender: AnyObject) {
         print("PIN is", PIN.text!)
         let pinController = storyboard?.instantiateViewControllerWithIdentifier("QuizViewController") as! QuizViewController
-        pinController.passedPIN = PIN.text!
+        pinController.passedPIN = String(self.PIN.text!)
         
         navigationController?.pushViewController(pinController, animated: true)
         presentViewController(pinController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func goProfile(sender: AnyObject) {
+        
+        /*let tabController = self.storyboard?.instantiateViewControllerWithIdentifier("TabNavigationController") as! UINavigationController
+        
+        self.presentViewController(tabController, animated: true, completion: nil)*/
+        
     }
     /*
     // MARK: - Navigation

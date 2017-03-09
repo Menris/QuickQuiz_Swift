@@ -1,8 +1,8 @@
 //
-//  QuizViewController.swift
+//  CheckViewController.swift
 //  QuickQuiz_Swift
 //
-//  Created by Admin on 27.02.17.
+//  Created by Admin on 07.03.17.
 //  Copyright © 2017 Admin. All rights reserved.
 //
 
@@ -11,14 +11,13 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class QuizViewController: UIViewController {
+class CheckViewController: UIViewController {
     
     var passedPIN = ""
 
     @IBOutlet weak var QuestionProgress: UILabel!
-    @IBOutlet weak var Question: UILabel!
-    
     @IBOutlet weak var textQuestion: UITextView!
+    
     @IBOutlet weak var btnA: UIButton!
     @IBOutlet weak var btnB: UIButton!
     @IBOutlet weak var btnC: UIButton!
@@ -26,23 +25,28 @@ class QuizViewController: UIViewController {
     
     var ref: FIRDatabaseReference!
     var countQuestions: FIRDatabaseReference!
+    let user = FIRAuth.auth()?.currentUser?.uid
+    
     var questionNumber = 1
-    var correctAnswer: String!
     var numberOfQuestions = 0
-    var myAnswer = ""
+    var correctAnswer: String!
     var quizTitle = ""
     var teacherID = ""
     var userName = ""
     var userGroup = ""
     var userResult = 0
     
-    let user = FIRAuth.auth()?.currentUser?.uid
-    
-    
-    
+    @IBOutlet weak var pin: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        btnA.enabled = false;
+        btnB.enabled = false;
+        btnC.enabled = false;
+        btnD.enabled = false;
         
         self.textQuestion.layer.cornerRadius = 10.0
         self.textQuestion.clipsToBounds = true
@@ -71,7 +75,7 @@ class QuizViewController: UIViewController {
             
             if let fTeacherID = snapshot.value!["teacherID"] as? String {
                 print(fTeacherID)
-              self.teacherID = fTeacherID
+                self.teacherID = fTeacherID
             }
             
             ///get user information
@@ -82,12 +86,8 @@ class QuizViewController: UIViewController {
             self.numberOfQuestions = Int(snapshot.childrenCount)
             self.readQuestion()
         })
-                // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Do any additional setup after loading the view.
     }
     
     func getUserInfo() {
@@ -106,41 +106,8 @@ class QuizViewController: UIViewController {
             }
             
         })
-
         
-    }
-    
-    @IBAction func clickA(sender: AnyObject) {
-        print("clickA")
-        self.btnA.backgroundColor = UIColor.greenColor()
-        self.btnB.backgroundColor = UIColor.lightGrayColor()
-        self.btnC.backgroundColor = UIColor.lightGrayColor()
-        self.btnD.backgroundColor = UIColor.lightGrayColor()
-        self.myAnswer = "A"
-    }
-    @IBAction func clickB(sender: AnyObject) {
-        print("clickB")
-        self.btnA.backgroundColor = UIColor.lightGrayColor()
-        self.btnB.backgroundColor = UIColor.greenColor()
-        self.btnC.backgroundColor = UIColor.lightGrayColor()
-        self.btnD.backgroundColor = UIColor.lightGrayColor()
-        self.myAnswer = "B"
-    }
-    @IBAction func clickC(sender: AnyObject) {
-        print("clickC")
-        self.btnA.backgroundColor = UIColor.lightGrayColor()
-        self.btnB.backgroundColor = UIColor.lightGrayColor()
-        self.btnC.backgroundColor = UIColor.greenColor()
-        self.btnD.backgroundColor = UIColor.lightGrayColor()
-        self.myAnswer = "C"
-    }
-    @IBAction func clickD(sender: AnyObject) {
-        print("clickD")
-        self.btnA.backgroundColor = UIColor.lightGrayColor()
-        self.btnB.backgroundColor = UIColor.lightGrayColor()
-        self.btnC.backgroundColor = UIColor.lightGrayColor()
-        self.btnD.backgroundColor = UIColor.greenColor()
-        self.myAnswer = "D"
+        
     }
     
     func readQuestion() {
@@ -179,29 +146,68 @@ class QuizViewController: UIViewController {
                 self.btnD.setTitle(ansD, forState: .Normal)
             }
         })
+        markQuestions()
     }
     
-    @IBAction func goNextQuestion(sender: AnyObject) {
+    
+    func markQuestions() {
+        ref = FIRDatabase.database().reference().child("userInformation").child(self.user!).child("myPassedQuizes").child(passedPIN).child("Question " + String(questionNumber))
+        ref.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
+            if let myAnswer = snapshot.value!["myAnswer"] as? String {
+                
+                if self.correctAnswer == myAnswer {
+                    let myBtn = "btn" + myAnswer
+                    print("myAnswer - " + myAnswer + myBtn)
+                    if myBtn == "btnA" {
+                        self.btnA.backgroundColor = UIColor.greenColor()
+                    }
+                    if myBtn == "btnB" {
+                        self.btnB.backgroundColor = UIColor.greenColor()
+                    }
+                    if myBtn == "btnC" {
+                        self.btnC.backgroundColor = UIColor.greenColor()
+                    }
+                    if myBtn == "btnD" {
+                        self.btnD.backgroundColor = UIColor.greenColor()
+                    }
+                    
+                } else {
+                
+                    if self.correctAnswer == "A" {
+                        self.btnA.backgroundColor = UIColor.blueColor()
+                    }
+                    if self.correctAnswer == "B" {
+                        self.btnB.backgroundColor = UIColor.blueColor()
+                    }
+                    if self.correctAnswer == "C" {
+                        self.btnC.backgroundColor = UIColor.blueColor()
+                    }
+                    if self.correctAnswer == "D" {
+                        self.btnD.backgroundColor = UIColor.blueColor()
+                    }
+                    
+                }
+                
+            }
+        })
+
+    }
+
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    @IBAction func showNextQuestion(sender: AnyObject) {
         
-        ///uncheck selected answer
-        self.btnA.selected = false
-        self.btnB.selected = false
-        self.btnC.selected = false
-        self.btnD.selected = false
         //uncolor buttons
         self.btnA.backgroundColor = UIColor.lightGrayColor()
         self.btnB.backgroundColor = UIColor.lightGrayColor()
         self.btnC.backgroundColor = UIColor.lightGrayColor()
         self.btnD.backgroundColor = UIColor.lightGrayColor()
-        
-        /// adding user Answer to database
-        self.ref = FIRDatabase.database().reference()
-        
-        self.ref.child("userInformation").child(self.user!).child("myPassedQuizes").child(passedPIN).child("Question " + String(questionNumber)).setValue(["myAnswer": self.myAnswer])
-        
-        if self.myAnswer == self.correctAnswer {
-            self.userResult++
-        }
         
         ///counter to next question +1
         questionNumber++
@@ -212,57 +218,26 @@ class QuizViewController: UIViewController {
             
             
             ///show alert dialog for finishing quiz
-            let submitAlert = UIAlertController(title:"You have finished", message: "Click submit button to see result", preferredStyle: UIAlertControllerStyle.Alert)
+            let submitAlert = UIAlertController(title:"You have finished", message: "Click submit button to finish checking", preferredStyle: UIAlertControllerStyle.Alert)
             self.presentViewController(submitAlert, animated: true, completion: nil)
             
             
-            submitAlert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+            submitAlert.addAction(UIAlertAction(title: "Finish", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
                 print("Submit Action")
                 
-                
-                
-                let teacherQuizID = self.ref.child("userInformation").child(self.teacherID).child("teacherQuizes").child(self.passedPIN)
-                teacherQuizID.updateChildValues([
-                    "quizID": self.passedPIN,
-                    ])
-                
-                let teacherRef = self.ref.child("userInformation").child(self.teacherID).child("teacherQuizes").child(self.passedPIN).child("groups").child(self.userGroup).child("userNames").child(self.userName)
-                teacherRef.updateChildValues([
-                    "name": self.userName,
-                    "group": self.userGroup,
-                    "userResult": String(self.userResult)
-                    ])
-                
-                
-                
-                let groupRef = self.ref.child("userInformation").child(self.teacherID).child("teacherQuizes").child(self.passedPIN).child("groups").child(self.userGroup)
-                groupRef.updateChildValues ([
-                    "group": self.userGroup
-                    ])
-                
-                let quizInfoRef = self.ref.child("userInformation").child(self.user!).child("myPassedQuizes").child(self.passedPIN)
-                quizInfoRef.updateChildValues ([
-                    
-                    "userResult": String(self.userResult),
-                    "quizTitle": self.quizTitle,
-                    "quizID": self.passedPIN
-                    ])
-                
-                
-                let resultController = self.storyboard?.instantiateViewControllerWithIdentifier("ResultViewController") as! ResultViewController
-                resultController.passedResult = String(self.userResult)
-                
-                self.navigationController?.pushViewController(resultController, animated: true)
+                let resultController = self.storyboard?.instantiateViewControllerWithIdentifier("StartingViewController") as! StartingViewController
                 self.presentViewController(resultController, animated: true, completion: nil)
+                
             }))
             
             submitAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
-                    print("Submit Action")
+                print("Submit Action")
             }))
             
         } else { readQuestion() }
+        
+        
     }
-
     /*
     // MARK: - Navigation
 

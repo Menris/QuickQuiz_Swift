@@ -36,10 +36,12 @@ class RegistrationViewController: UIViewController {
     @IBAction func studentSelect(sender: AnyObject) {
         Role = "students"
         print ("Student")
+        self.GroupName.hidden = false
     }
     @IBAction func teacherSelect(sender: AnyObject) {
         Role = "teachers"
         print ("Teacher")
+        self.GroupName.hidden = true
     }
     @IBAction func createUser(sender: AnyObject) {
         

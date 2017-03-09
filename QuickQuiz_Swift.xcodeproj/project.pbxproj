@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		84D578BF1E5E10C000D85D2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D578BE1E5E10C000D85D2B /* AppDelegate.swift */; };
 		84D578C11E5E10C000D85D2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D578C01E5E10C000D85D2B /* ViewController.swift */; };
-		84D578C41E5E10C100D85D2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D578C21E5E10C100D85D2B /* Main.storyboard */; };
 		84D578C61E5E10C100D85D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D578C51E5E10C100D85D2B /* Assets.xcassets */; };
 		84D578C91E5E10C100D85D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D578C71E5E10C100D85D2B /* LaunchScreen.storyboard */; };
 		84D578D41E5E10C100D85D2B /* QuickQuiz_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D578D31E5E10C100D85D2B /* QuickQuiz_SwiftTests.swift */; };
@@ -18,11 +17,19 @@
 		84D578F21E5E11E000D85D2B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578EE1E5E11E000D85D2B /* FirebaseCore.framework */; };
 		84D578F31E5E11E000D85D2B /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578EF1E5E11E000D85D2B /* FirebaseInstanceID.framework */; };
 		84D578F41E5E11E000D85D2B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */; };
+		84DA7C101E717D710066FA2C /* SwiftLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA7C0F1E717D710066FA2C /* SwiftLoading.swift */; };
 		84E21B7E1E5EA98E0012F73F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */; };
 		84E21B801E5EC1A90012F73F /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */; };
 		84E21B831E5EC4090012F73F /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E21B811E5EC4090012F73F /* FirebaseAuth.framework */; };
 		84E21B841E5EC4090012F73F /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */; };
 		84E21B861E5EEA660012F73F /* StartingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E21B851E5EEA660012F73F /* StartingViewController.swift */; };
+		84E341EB1E66B99F00F9EDF0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E341EA1E66B99F00F9EDF0 /* ResultViewController.swift */; };
+		84E341ED1E66CC6A00F9EDF0 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E341EC1E66CC6A00F9EDF0 /* ProfileTabViewController.swift */; };
+		84E341F11E6964A400F9EDF0 /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E341F01E6964A400F9EDF0 /* OverviewTableViewController.swift */; };
+		84E341F71E6E7B4300F9EDF0 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E341F61E6E7B4300F9EDF0 /* CheckViewController.swift */; };
+		84E341FA1E6E8C8E00F9EDF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E341F81E6E8C8E00F9EDF0 /* Main.storyboard */; };
+		84E341FC1E71760C00F9EDF0 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E341FB1E71760C00F9EDF0 /* user.png */; };
+		84E341FE1E71765400F9EDF0 /* exam.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E341FD1E71765400F9EDF0 /* exam.png */; };
 		84EDC75C1E6019F40081CB9D /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EDC75B1E6019F40081CB9D /* DLRadioButton.m */; };
 		84EDC75E1E63EF500081CB9D /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EDC75D1E63EF500081CB9D /* FirebaseDatabase.framework */; };
 		84EDC7601E63FBE00081CB9D /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EDC75F1E63FBE00081CB9D /* QuizViewController.swift */; };
@@ -49,7 +56,6 @@
 		84D578BB1E5E10C000D85D2B /* QuickQuiz_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickQuiz_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D578BE1E5E10C000D85D2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D578C01E5E10C000D85D2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		84D578C31E5E10C100D85D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84D578C51E5E10C100D85D2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84D578C81E5E10C100D85D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84D578CA1E5E10C100D85D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,15 +71,24 @@
 		84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		84D578F51E5E123B00D85D2B /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		84D578F61E5E130F00D85D2B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		84DA7C0F1E717D710066FA2C /* SwiftLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoading.swift; sourceTree = "<group>"; };
 		84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		84E21B811E5EC4090012F73F /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
 		84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		84E21B851E5EEA660012F73F /* StartingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingViewController.swift; sourceTree = "<group>"; };
+		84E341EA1E66B99F00F9EDF0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		84E341EC1E66CC6A00F9EDF0 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
+		84E341F01E6964A400F9EDF0 /* OverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
+		84E341F61E6E7B4300F9EDF0 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		84E341F91E6E8C8E00F9EDF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84E341FB1E71760C00F9EDF0 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		84E341FD1E71765400F9EDF0 /* exam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exam.png; sourceTree = "<group>"; };
 		84EDC75A1E6019F40081CB9D /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		84EDC75B1E6019F40081CB9D /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		84EDC75D1E63EF500081CB9D /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = "<group>"; };
 		84EDC75F1E63FBE00081CB9D /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		84EDC7611E6596190081CB9D /* casual.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = casual.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,16 +147,24 @@
 		84D578BD1E5E10C000D85D2B /* QuickQuiz_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				84DA7C0F1E717D710066FA2C /* SwiftLoading.swift */,
 				84D578BE1E5E10C000D85D2B /* AppDelegate.swift */,
 				84D578C01E5E10C000D85D2B /* ViewController.swift */,
 				84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */,
 				84E21B851E5EEA660012F73F /* StartingViewController.swift */,
 				84EDC75F1E63FBE00081CB9D /* QuizViewController.swift */,
-				84D578C21E5E10C100D85D2B /* Main.storyboard */,
+				84E341EA1E66B99F00F9EDF0 /* ResultViewController.swift */,
+				84E341EC1E66CC6A00F9EDF0 /* ProfileTabViewController.swift */,
+				84E341F01E6964A400F9EDF0 /* OverviewTableViewController.swift */,
+				84E341F61E6E7B4300F9EDF0 /* CheckViewController.swift */,
+				84E341F81E6E8C8E00F9EDF0 /* Main.storyboard */,
+				84E341FD1E71765400F9EDF0 /* exam.png */,
+				84E341FB1E71760C00F9EDF0 /* user.png */,
 				84D578F51E5E123B00D85D2B /* Firebase.h */,
 				84EDC75A1E6019F40081CB9D /* DLRadioButton.h */,
 				84EDC75B1E6019F40081CB9D /* DLRadioButton.m */,
 				84D578C51E5E10C100D85D2B /* Assets.xcassets */,
+				84EDC7611E6596190081CB9D /* casual.ttf */,
 				84D578F61E5E130F00D85D2B /* module.modulemap */,
 				84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */,
 				84D578C71E5E10C100D85D2B /* LaunchScreen.storyboard */,
@@ -287,9 +310,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D578C91E5E10C100D85D2B /* LaunchScreen.storyboard in Resources */,
+				84E341FC1E71760C00F9EDF0 /* user.png in Resources */,
+				84E341FE1E71765400F9EDF0 /* exam.png in Resources */,
 				84E21B7E1E5EA98E0012F73F /* GoogleService-Info.plist in Resources */,
 				84D578C61E5E10C100D85D2B /* Assets.xcassets in Resources */,
-				84D578C41E5E10C100D85D2B /* Main.storyboard in Resources */,
+				84E341FA1E6E8C8E00F9EDF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,8 +339,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DA7C101E717D710066FA2C /* SwiftLoading.swift in Sources */,
+				84E341ED1E66CC6A00F9EDF0 /* ProfileTabViewController.swift in Sources */,
+				84E341F11E6964A400F9EDF0 /* OverviewTableViewController.swift in Sources */,
 				84E21B801E5EC1A90012F73F /* RegistrationViewController.swift in Sources */,
+				84E341F71E6E7B4300F9EDF0 /* CheckViewController.swift in Sources */,
 				84EDC75C1E6019F40081CB9D /* DLRadioButton.m in Sources */,
+				84E341EB1E66B99F00F9EDF0 /* ResultViewController.swift in Sources */,
 				84D578C11E5E10C000D85D2B /* ViewController.swift in Sources */,
 				84EDC7601E63FBE00081CB9D /* QuizViewController.swift in Sources */,
 				84E21B861E5EEA660012F73F /* StartingViewController.swift in Sources */,
@@ -355,20 +385,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		84D578C21E5E10C100D85D2B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84D578C31E5E10C100D85D2B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		84D578C71E5E10C100D85D2B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84D578C81E5E10C100D85D2B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		84E341F81E6E8C8E00F9EDF0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E341F91E6E8C8E00F9EDF0 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
