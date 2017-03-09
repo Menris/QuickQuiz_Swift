@@ -56,9 +56,7 @@ class ProfileTabViewController: UIViewController {
         
         let triggerTime = (Int64(NSEC_PER_SEC) * 3 )
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), {() -> Void in
-        
             SwiftLoading().hideLoading()
-            
         })
         
     }

@@ -44,6 +44,11 @@ class QuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let triggerTime = (Int64(NSEC_PER_MSEC) * 500 )
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), {() -> Void in
+            SwiftLoading().showLoading()
+        })
+        
         self.textQuestion.layer.cornerRadius = 10.0
         self.textQuestion.clipsToBounds = true
         
@@ -83,6 +88,7 @@ class QuizViewController: UIViewController {
             self.readQuestion()
         })
                 // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,6 +151,7 @@ class QuizViewController: UIViewController {
     
     func readQuestion() {
         
+        
         self.QuestionProgress.text = String(questionNumber) + " / " + String(self.numberOfQuestions-2)
         
         ref = FIRDatabase.database().reference().child("Tests").child(passedPIN).child("Question " + String(questionNumber))
@@ -179,6 +186,14 @@ class QuizViewController: UIViewController {
                 self.btnD.setTitle(ansD, forState: .Normal)
             }
         })
+        
+        let triggerTime = (Int64(NSEC_PER_SEC) * 3 )
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), {() -> Void in
+            SwiftLoading().hideLoading()
+        })
+
+    
+        
     }
     
     @IBAction func goNextQuestion(sender: AnyObject) {
