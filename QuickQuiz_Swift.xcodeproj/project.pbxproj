@@ -13,15 +13,17 @@
 		84D578C91E5E10C100D85D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D578C71E5E10C100D85D2B /* LaunchScreen.storyboard */; };
 		84D578D41E5E10C100D85D2B /* QuickQuiz_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D578D31E5E10C100D85D2B /* QuickQuiz_SwiftTests.swift */; };
 		84D578DF1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D578DE1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.swift */; };
-		84D578F11E5E11E000D85D2B /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578ED1E5E11E000D85D2B /* FirebaseAnalytics.framework */; };
-		84D578F21E5E11E000D85D2B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578EE1E5E11E000D85D2B /* FirebaseCore.framework */; };
-		84D578F31E5E11E000D85D2B /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578EF1E5E11E000D85D2B /* FirebaseInstanceID.framework */; };
-		84D578F41E5E11E000D85D2B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */; };
 		84DA7C101E717D710066FA2C /* SwiftLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA7C0F1E717D710066FA2C /* SwiftLoading.swift */; };
+		84DA7C181E7187540066FA2C /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA7C111E7187540066FA2C /* FirebaseAnalytics.framework */; };
+		84DA7C191E7187540066FA2C /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA7C121E7187540066FA2C /* FirebaseAuth.framework */; };
+		84DA7C1A1E7187540066FA2C /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA7C131E7187540066FA2C /* FirebaseCore.framework */; };
+		84DA7C1B1E7187540066FA2C /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA7C141E7187540066FA2C /* FirebaseDatabase.framework */; };
+		84DA7C1C1E7187540066FA2C /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA7C151E7187540066FA2C /* FirebaseInstanceID.framework */; };
+		84DA7C1D1E7187540066FA2C /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA7C161E7187540066FA2C /* GoogleToolboxForMac.framework */; };
+		84DA7C1E1E7187540066FA2C /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA7C171E7187540066FA2C /* GTMSessionFetcher.framework */; };
+		84DA7C221E77CAAB0066FA2C /* NewQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA7C211E77CAAB0066FA2C /* NewQuizViewController.swift */; };
 		84E21B7E1E5EA98E0012F73F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */; };
 		84E21B801E5EC1A90012F73F /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */; };
-		84E21B831E5EC4090012F73F /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E21B811E5EC4090012F73F /* FirebaseAuth.framework */; };
-		84E21B841E5EC4090012F73F /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */; };
 		84E21B861E5EEA660012F73F /* StartingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E21B851E5EEA660012F73F /* StartingViewController.swift */; };
 		84E341EB1E66B99F00F9EDF0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E341EA1E66B99F00F9EDF0 /* ResultViewController.swift */; };
 		84E341ED1E66CC6A00F9EDF0 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E341EC1E66CC6A00F9EDF0 /* ProfileTabViewController.swift */; };
@@ -31,8 +33,6 @@
 		84E341FC1E71760C00F9EDF0 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E341FB1E71760C00F9EDF0 /* user.png */; };
 		84E341FE1E71765400F9EDF0 /* exam.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E341FD1E71765400F9EDF0 /* exam.png */; };
 		84EDC75C1E6019F40081CB9D /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EDC75B1E6019F40081CB9D /* DLRadioButton.m */; };
-		84EDC75E1E63EF500081CB9D /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EDC75D1E63EF500081CB9D /* FirebaseDatabase.framework */; };
-		84EDC7601E63FBE00081CB9D /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EDC75F1E63FBE00081CB9D /* QuizViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,17 +65,19 @@
 		84D578DA1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickQuiz_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D578DE1E5E10C100D85D2B /* QuickQuiz_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickQuiz_SwiftUITests.swift; sourceTree = "<group>"; };
 		84D578E01E5E10C100D85D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84D578ED1E5E11E000D85D2B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		84D578EE1E5E11E000D85D2B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
-		84D578EF1E5E11E000D85D2B /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		84D578F51E5E123B00D85D2B /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		84D578F61E5E130F00D85D2B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		84DA7C0F1E717D710066FA2C /* SwiftLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoading.swift; sourceTree = "<group>"; };
+		84DA7C111E7187540066FA2C /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Firebase/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		84DA7C121E7187540066FA2C /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Firebase/FirebaseAuth.framework; sourceTree = "<group>"; };
+		84DA7C131E7187540066FA2C /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Firebase/FirebaseCore.framework; sourceTree = "<group>"; };
+		84DA7C141E7187540066FA2C /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Firebase/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		84DA7C151E7187540066FA2C /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Firebase/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		84DA7C161E7187540066FA2C /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = Firebase/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		84DA7C171E7187540066FA2C /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Firebase/GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		84DA7C211E77CAAB0066FA2C /* NewQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewQuizViewController.swift; sourceTree = "<group>"; };
 		84E21B7D1E5EA98E0012F73F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		84E21B811E5EC4090012F73F /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
-		84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		84E21B851E5EEA660012F73F /* StartingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingViewController.swift; sourceTree = "<group>"; };
 		84E341EA1E66B99F00F9EDF0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		84E341EC1E66CC6A00F9EDF0 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
@@ -86,8 +88,6 @@
 		84E341FD1E71765400F9EDF0 /* exam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exam.png; sourceTree = "<group>"; };
 		84EDC75A1E6019F40081CB9D /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		84EDC75B1E6019F40081CB9D /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
-		84EDC75D1E63EF500081CB9D /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = "<group>"; };
-		84EDC75F1E63FBE00081CB9D /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		84EDC7611E6596190081CB9D /* casual.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = casual.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,13 +96,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84EDC75E1E63EF500081CB9D /* FirebaseDatabase.framework in Frameworks */,
-				84D578F21E5E11E000D85D2B /* FirebaseCore.framework in Frameworks */,
-				84D578F41E5E11E000D85D2B /* GoogleToolboxForMac.framework in Frameworks */,
-				84E21B831E5EC4090012F73F /* FirebaseAuth.framework in Frameworks */,
-				84D578F31E5E11E000D85D2B /* FirebaseInstanceID.framework in Frameworks */,
-				84E21B841E5EC4090012F73F /* GTMSessionFetcher.framework in Frameworks */,
-				84D578F11E5E11E000D85D2B /* FirebaseAnalytics.framework in Frameworks */,
+				84DA7C1B1E7187540066FA2C /* FirebaseDatabase.framework in Frameworks */,
+				84DA7C181E7187540066FA2C /* FirebaseAnalytics.framework in Frameworks */,
+				84DA7C1C1E7187540066FA2C /* FirebaseInstanceID.framework in Frameworks */,
+				84DA7C1D1E7187540066FA2C /* GoogleToolboxForMac.framework in Frameworks */,
+				84DA7C191E7187540066FA2C /* FirebaseAuth.framework in Frameworks */,
+				84DA7C1E1E7187540066FA2C /* GTMSessionFetcher.framework in Frameworks */,
+				84DA7C1A1E7187540066FA2C /* FirebaseCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +152,7 @@
 				84D578C01E5E10C000D85D2B /* ViewController.swift */,
 				84E21B7F1E5EC1A90012F73F /* RegistrationViewController.swift */,
 				84E21B851E5EEA660012F73F /* StartingViewController.swift */,
-				84EDC75F1E63FBE00081CB9D /* QuizViewController.swift */,
+				84DA7C211E77CAAB0066FA2C /* NewQuizViewController.swift */,
 				84E341EA1E66B99F00F9EDF0 /* ResultViewController.swift */,
 				84E341EC1E66CC6A00F9EDF0 /* ProfileTabViewController.swift */,
 				84E341F01E6964A400F9EDF0 /* OverviewTableViewController.swift */,
@@ -194,13 +194,13 @@
 		84D578EC1E5E11AB00D85D2B /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				84EDC75D1E63EF500081CB9D /* FirebaseDatabase.framework */,
-				84E21B811E5EC4090012F73F /* FirebaseAuth.framework */,
-				84E21B821E5EC4090012F73F /* GTMSessionFetcher.framework */,
-				84D578ED1E5E11E000D85D2B /* FirebaseAnalytics.framework */,
-				84D578EE1E5E11E000D85D2B /* FirebaseCore.framework */,
-				84D578EF1E5E11E000D85D2B /* FirebaseInstanceID.framework */,
-				84D578F01E5E11E000D85D2B /* GoogleToolboxForMac.framework */,
+				84DA7C111E7187540066FA2C /* FirebaseAnalytics.framework */,
+				84DA7C121E7187540066FA2C /* FirebaseAuth.framework */,
+				84DA7C131E7187540066FA2C /* FirebaseCore.framework */,
+				84DA7C141E7187540066FA2C /* FirebaseDatabase.framework */,
+				84DA7C151E7187540066FA2C /* FirebaseInstanceID.framework */,
+				84DA7C161E7187540066FA2C /* GoogleToolboxForMac.framework */,
+				84DA7C171E7187540066FA2C /* GTMSessionFetcher.framework */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -343,11 +343,11 @@
 				84E341ED1E66CC6A00F9EDF0 /* ProfileTabViewController.swift in Sources */,
 				84E341F11E6964A400F9EDF0 /* OverviewTableViewController.swift in Sources */,
 				84E21B801E5EC1A90012F73F /* RegistrationViewController.swift in Sources */,
+				84DA7C221E77CAAB0066FA2C /* NewQuizViewController.swift in Sources */,
 				84E341F71E6E7B4300F9EDF0 /* CheckViewController.swift in Sources */,
 				84EDC75C1E6019F40081CB9D /* DLRadioButton.m in Sources */,
 				84E341EB1E66B99F00F9EDF0 /* ResultViewController.swift in Sources */,
 				84D578C11E5E10C000D85D2B /* ViewController.swift in Sources */,
-				84EDC7601E63FBE00081CB9D /* QuizViewController.swift in Sources */,
 				84E21B861E5EEA660012F73F /* StartingViewController.swift in Sources */,
 				84D578BF1E5E10C000D85D2B /* AppDelegate.swift in Sources */,
 			);
@@ -495,6 +495,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Firebase",
 				);
 				INFOPLIST_FILE = QuickQuiz_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -514,6 +515,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Firebase",
 				);
 				INFOPLIST_FILE = QuickQuiz_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

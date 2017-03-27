@@ -1,21 +1,21 @@
 //
-//  ResultViewController.swift
+//  mQuizViewController.swift
 //  QuickQuiz_Swift
 //
-//  Created by Admin on 01.03.17.
+//  Created by Admin on 14.03.17.
 //  Copyright © 2017 Admin. All rights reserved.
 //
 
 import UIKit
 
-class ResultViewController: UIViewController {
-
-    @IBOutlet weak var resultLabel: UILabel!
-    var passedResult = ""
+class mQuizViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var passedPIN = ""
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.resultLabel.text = self.passedResult
+
         // Do any additional setup after loading the view.
     }
 
@@ -24,15 +24,14 @@ class ResultViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func finishQuiz(sender: AnyObject) {
-        
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("StartingViewController") as! StartingViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-
-        
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
     /*
     // MARK: - Navigation
 

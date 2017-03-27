@@ -17,6 +17,7 @@ class QuizViewController: UIViewController {
 
     @IBOutlet weak var QuestionProgress: UILabel!
     @IBOutlet weak var Question: UILabel!
+    @IBOutlet weak var nextQBtn: UIButton!
     
     @IBOutlet weak var textQuestion: UITextView!
     @IBOutlet weak var btnA: UIButton!
@@ -26,6 +27,8 @@ class QuizViewController: UIViewController {
     
     var ref: FIRDatabaseReference!
     var countQuestions: FIRDatabaseReference!
+    let user = FIRAuth.auth()?.currentUser?.uid
+    
     var questionNumber = 1
     var correctAnswer: String!
     var numberOfQuestions = 0
@@ -36,7 +39,6 @@ class QuizViewController: UIViewController {
     var userGroup = ""
     var userResult = 0
     
-    let user = FIRAuth.auth()?.currentUser?.uid
     
     
     
@@ -51,6 +53,9 @@ class QuizViewController: UIViewController {
         
         self.textQuestion.layer.cornerRadius = 10.0
         self.textQuestion.clipsToBounds = true
+        
+        self.nextQBtn.layer.cornerRadius = 10.0
+        self.nextQBtn.clipsToBounds = true
         
         self.btnA.layer.cornerRadius = 10.0
         self.btnA.clipsToBounds = true
@@ -224,7 +229,6 @@ class QuizViewController: UIViewController {
         ///checking if it the last question
         if questionNumber > self.numberOfQuestions-2 {
             print("Show submit form")
-            
             
             ///show alert dialog for finishing quiz
             let submitAlert = UIAlertController(title:"You have finished", message: "Click submit button to see result", preferredStyle: UIAlertControllerStyle.Alert)

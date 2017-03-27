@@ -11,17 +11,14 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class CheckViewController: UIViewController {
+class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var passedPIN = ""
-
-    @IBOutlet weak var QuestionProgress: UILabel!
-    @IBOutlet weak var textQuestion: UITextView!
+    var myArray = [""]
+    var ansArray = [""]
     
-    @IBOutlet weak var btnA: UIButton!
-    @IBOutlet weak var btnB: UIButton!
-    @IBOutlet weak var btnC: UIButton!
-    @IBOutlet weak var btnD: UIButton!
+    var correctAnswerText = ""
+    var myAnswerText = ""
     
     var ref: FIRDatabaseReference!
     var countQuestions: FIRDatabaseReference!
@@ -31,6 +28,7 @@ class CheckViewController: UIViewController {
     var numberOfQuestions = 0
     var correctAnswer: String!
     var quizTitle = ""
+    
     var teacherID = ""
     var userName = ""
     var userGroup = ""
@@ -38,31 +36,34 @@ class CheckViewController: UIViewController {
     
     @IBOutlet weak var pin: UILabel!
     
+    @IBOutlet weak var btn_next: UIButton!
+    @IBOutlet weak var btn_back: UIButton!
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textQuestion: UILabel!
+    @IBOutlet weak var label_quizTitle: UILabel!
+    @IBOutlet weak var questionProgress: UILabel!
+    @IBOutlet weak var questionText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
         
+        self.btn_next.layer.cornerRadius = 10.0
+        self.btn_next.clipsToBounds = true
+        self.btn_next.layer.borderWidth = 2
+        self.btn_next.layer.borderColor = UIColor.blackColor().CGColor
         
-        btnA.enabled = false;
-        btnB.enabled = false;
-        btnC.enabled = false;
-        btnD.enabled = false;
+        self.btn_back.layer.cornerRadius = 10.0
+        self.btn_back.clipsToBounds = true
+        self.btn_back.layer.borderWidth = 2
+        self.btn_back.layer.borderColor = UIColor.blackColor().CGColor
         
-        self.textQuestion.layer.cornerRadius = 10.0
-        self.textQuestion.clipsToBounds = true
-        
-        self.btnA.layer.cornerRadius = 10.0
-        self.btnA.clipsToBounds = true
-        
-        self.btnB.layer.cornerRadius = 10.0
-        self.btnB.clipsToBounds = true
-        
-        self.btnC.layer.cornerRadius = 10.0
-        self.btnC.clipsToBounds = true
-        
-        self.btnD.layer.cornerRadius = 10.0
-        self.btnD.clipsToBounds = true
-        
+        self.ref = FIRDatabase.database().reference()
+
         
         //counting questions
         countQuestions = FIRDatabase.database().reference().child("Tests").child(passedPIN)
@@ -70,7 +71,7 @@ class CheckViewController: UIViewController {
             
             if let fQuizTitle = snapshot.value!["quizTitle"] as? String {
                 print(fQuizTitle)
-                self.quizTitle = fQuizTitle
+                self.label_quizTitle.text! = fQuizTitle
             }
             
             if let fTeacherID = snapshot.value!["teacherID"] as? String {
@@ -82,18 +83,24 @@ class CheckViewController: UIViewController {
             self.getUserInfo()
             
         })
-        countQuestions.observeEventType(.Value, withBlock: { (snapshot: FIRDataSnapshot!) in
+        countQuestions.child("Questions").observeEventType(.Value, withBlock: { (snapshot: FIRDataSnapshot!) in
             self.numberOfQuestions = Int(snapshot.childrenCount)
-            self.readQuestion()
+            print("number of questions: " + String(snapshot.childrenCount))
+            self.showQuestion()
         })
+        
         
         // Do any additional setup after loading the view.
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     func getUserInfo() {
         
-        countQuestions = FIRDatabase.database().reference().child("userInformation").child(self.user!)
-        countQuestions.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        ref.child("userInformation").child(self.user!).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             
             if let fUserName = snapshot.value!["name"] as? String {
                 print(fUserName)
@@ -104,24 +111,24 @@ class CheckViewController: UIViewController {
                 print(fUserGroup)
                 self.userGroup = fUserGroup
             }
-            
         })
-        
-        
     }
     
-    func readQuestion() {
+    func showQuestion() {
         
-        self.QuestionProgress.text = String(questionNumber) + " / " + String(self.numberOfQuestions-2)
+        self.myArray.removeAll()
+        self.ansArray.removeAll()
+        self.correctAnswerText = ""
         
-        ref = FIRDatabase.database().reference().child("Tests").child(passedPIN).child("Question " + String(questionNumber))
-        ref.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        self.questionProgress.text = String(questionNumber) + " / " + String(self.numberOfQuestions )
+        
+        ref.child("Tests").child(passedPIN).child("Questions").child("Question " + String(questionNumber)).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             
             if let CurrentQuestion = snapshot.value!["question"] as? String {
                 print(CurrentQuestion)
-                self.textQuestion.text = CurrentQuestion
-                self.textQuestion.font = .systemFontOfSize(18)
-                self.textQuestion.textAlignment = .Center
+                self.questionText.text = CurrentQuestion
+                self.questionText.font = .systemFontOfSize(18)
+                self.questionText.textAlignment = .Center
             }
             
             if let correctAns = snapshot.value!["correctAnswer"] as? String {
@@ -131,121 +138,97 @@ class CheckViewController: UIViewController {
             
             if let ansA = snapshot.value!["answerA"] as? String {
                 print (ansA)
-                self.btnA.setTitle(ansA, forState: .Normal)
+                if (self.correctAnswer == "A") {
+                    self.correctAnswerText = ansA
+                }
+                self.ansArray.append("A")
+                self.myArray.append(ansA)
             }
             if let ansB = snapshot.value!["answerB"] as? String {
                 print (ansB)
-                self.btnB.setTitle(ansB, forState: .Normal)
+                if (self.correctAnswer == "B") {
+                    self.correctAnswerText = ansB
+                }
+                self.ansArray.append("B")
+                self.myArray.append(ansB)
             }
             if let ansC = snapshot.value!["answerC"] as? String {
                 print (ansC)
-                self.btnC.setTitle(ansC, forState: .Normal)
+                if (self.correctAnswer == "C") {
+                    self.correctAnswerText = ansC
+                }
+                self.ansArray.append("C")
+                self.myArray.append(ansC)
             }
             if let ansD = snapshot.value!["answerD"] as? String {
                 print (ansD)
-                self.btnD.setTitle(ansD, forState: .Normal)
-            }
-        })
-        markQuestions()
-    }
-    
-    
-    func markQuestions() {
-        ref = FIRDatabase.database().reference().child("userInformation").child(self.user!).child("myPassedQuizes").child(passedPIN).child("Question " + String(questionNumber))
-        ref.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            
-            if let myAnswer = snapshot.value!["myAnswer"] as? String {
-                
-                if self.correctAnswer == myAnswer {
-                    let myBtn = "btn" + myAnswer
-                    print("myAnswer - " + myAnswer + myBtn)
-                    if myBtn == "btnA" {
-                        self.btnA.backgroundColor = UIColor.greenColor()
-                    }
-                    if myBtn == "btnB" {
-                        self.btnB.backgroundColor = UIColor.greenColor()
-                    }
-                    if myBtn == "btnC" {
-                        self.btnC.backgroundColor = UIColor.greenColor()
-                    }
-                    if myBtn == "btnD" {
-                        self.btnD.backgroundColor = UIColor.greenColor()
-                    }
-                    
-                } else {
-                
-                    if self.correctAnswer == "A" {
-                        self.btnA.backgroundColor = UIColor.blueColor()
-                    }
-                    if self.correctAnswer == "B" {
-                        self.btnB.backgroundColor = UIColor.blueColor()
-                    }
-                    if self.correctAnswer == "C" {
-                        self.btnC.backgroundColor = UIColor.blueColor()
-                    }
-                    if self.correctAnswer == "D" {
-                        self.btnD.backgroundColor = UIColor.blueColor()
-                    }
-                    
+                if (self.correctAnswer == "D") {
+                    self.correctAnswerText = ansD
                 }
-                
+                self.ansArray.append("D")
+                self.myArray.append(ansD)
             }
+            if let ansE = snapshot.value!["answerE"] as? String {
+                self.ansArray.append("E")
+                self.myArray.append(ansE)
+            }
+            if let ansF = snapshot.value!["answerF"] as? String {
+                print (ansF)
+                self.ansArray.append("F")
+                self.myArray.append(ansF)
+            }
+            if let ansG = snapshot.value!["answerG"] as? String {
+                self.ansArray.append("G")
+                self.myArray.append(ansG)
+            }
+            if let ansH = snapshot.value!["answerH"] as? String {
+                self.ansArray.append("H")
+                self.myArray.append(ansH)
+            }
+            if let ansI = snapshot.value!["answerI"] as? String {
+                self.ansArray.append("I")
+                self.myArray.append(ansI)
+            }
+            if let ansJ = snapshot.value!["answerJ"] as? String {
+                self.ansArray.append("J")
+                self.myArray.append(ansJ)
+            }
+            self.tableView.reloadData()
         })
-
-    }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-
-    @IBAction func showNextQuestion(sender: AnyObject) {
+    
+    @IBAction func goNextQuestion(sender: AnyObject) {
+        if self.questionNumber < self.numberOfQuestions {
+            self.questionNumber++
+            showQuestion()
+        }
+    }
+    
+    @IBAction func goPreviousQuestion(sender: AnyObject) {
+        if self.questionNumber > 1{
+            self.questionNumber--
+            showQuestion()
+        }
+    }
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //uncolor buttons
-        self.btnA.backgroundColor = UIColor.lightGrayColor()
-        self.btnB.backgroundColor = UIColor.lightGrayColor()
-        self.btnC.backgroundColor = UIColor.lightGrayColor()
-        self.btnD.backgroundColor = UIColor.lightGrayColor()
-        
-        ///counter to next question +1
-        questionNumber++
-        
-        ///checking if it the last question
-        if questionNumber > self.numberOfQuestions-2 {
-            print("Show submit form")
-            
-            
-            ///show alert dialog for finishing quiz
-            let submitAlert = UIAlertController(title:"You have finished", message: "Click submit button to finish checking", preferredStyle: UIAlertControllerStyle.Alert)
-            self.presentViewController(submitAlert, animated: true, completion: nil)
-            
-            
-            submitAlert.addAction(UIAlertAction(title: "Finish", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
-                print("Submit Action")
-                
-                let resultController = self.storyboard?.instantiateViewControllerWithIdentifier("StartingViewController") as! StartingViewController
-                self.presentViewController(resultController, animated: true, completion: nil)
-                
-            }))
-            
-            submitAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
-                print("Submit Action")
-            }))
-            
-        } else { readQuestion() }
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("QuestionsCell", forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.whiteColor()
+        if (self.correctAnswerText == self.myArray[indexPath.item]) {
+            cell.backgroundColor = UIColor.greenColor()
+        }
+        cell.textLabel?.text = myArray[indexPath.item]
+        return cell
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

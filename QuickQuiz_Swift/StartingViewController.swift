@@ -16,11 +16,25 @@ class StartingViewController: UIViewController {
     @IBOutlet weak var PIN: UITextField!
     @IBOutlet weak var appTitle: UILabel!
     
+    @IBOutlet weak var btn_enter: UIButton!
+    @IBOutlet weak var btn_profile: UIButton!
+    
+    
     var backgroundColors = [UIColor()]
     var backgroundLoop = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.btn_enter.layer.cornerRadius = 10.0
+        self.btn_enter.clipsToBounds = true
+        self.btn_enter.layer.borderWidth = 2
+        self.btn_enter.layer.borderColor = UIColor.blackColor().CGColor
+        
+        self.btn_profile.layer.cornerRadius = 10.0
+        self.btn_profile.clipsToBounds = true
+        self.btn_profile.layer.borderWidth = 2
+        self.btn_profile.layer.borderColor = UIColor.blackColor().CGColor
         
         backgroundColors = [UIColor.redColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.greenColor()]
         backgroundLoop = 0
@@ -63,12 +77,22 @@ class StartingViewController: UIViewController {
     }
     
     @IBAction func goQuiz(sender: AnyObject) {
-        print("PIN is", PIN.text!)
-        let pinController = storyboard?.instantiateViewControllerWithIdentifier("QuizViewController") as! QuizViewController
-        pinController.passedPIN = String(self.PIN.text!)
         
-        navigationController?.pushViewController(pinController, animated: true)
-        presentViewController(pinController, animated: true, completion: nil)
+        if let text =  PIN.text where text.isEmpty {
+            
+            let alert = UIAlertController(title:"Incorrect PIN", message: "Enter correct PIN number of your quiz", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+        } else {
+            print("PIN is", PIN.text!)
+            let pinController = storyboard?.instantiateViewControllerWithIdentifier("NewQuizViewController") as! NewQuizViewController
+            pinController.passedPIN = String(self.PIN.text!)
+            
+            navigationController?.pushViewController(pinController, animated: true)
+            presentViewController(pinController, animated: true, completion: nil)
+        }
     }
     
     

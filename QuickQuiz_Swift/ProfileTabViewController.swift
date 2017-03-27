@@ -22,6 +22,7 @@ class ProfileTabViewController: UIViewController {
         super.viewDidLoad()
         SwiftLoading().showLoading()
         self.getUserInfo()
+        
         // Do any additional setup after loading the view.
     }
 
