@@ -42,8 +42,14 @@ class NewQuizViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SwiftLoading().showLoading()
+        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.alwaysBounceVertical = false
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         self.btn_next.layer.cornerRadius = 10.0
         self.btn_next.clipsToBounds = true
@@ -83,7 +89,6 @@ class NewQuizViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.numberOfQuestions = Int(snapshot.childrenCount)
             self.showQuestion()
         })
-        
 
         // Do any additional setup after loading the view.
     }
@@ -107,6 +112,8 @@ class NewQuizViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    
+    
     func showQuestion() {
         
         self.myArray.removeAll()
@@ -118,7 +125,7 @@ class NewQuizViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let CurrentQuestion = snapshot.value!["question"] as? String {
                 print(CurrentQuestion)
                 self.questionText.text = CurrentQuestion
-                self.questionText.font = .systemFontOfSize(18)
+                self.questionText.font = .systemFontOfSize(25)
                 self.questionText.textAlignment = .Center
             }
             
@@ -185,7 +192,6 @@ class NewQuizViewController: UIViewController, UITableViewDelegate, UITableViewD
             answersArray.append(self.myAnswer)
             
             if (self.questionNumber == self.numberOfQuestions) {
-                
                 
                 
                 var statRef: FIRDatabaseReference!
@@ -300,7 +306,8 @@ class NewQuizViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
        // let selectedAnswer = tableView.cellForRowAtIndexPath(indexPath)
         
-        print("My select " + String(indexPath.row))
+        let selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.greenColor()
         
         switch String(indexPath.row) {
         case "0" :
@@ -337,6 +344,11 @@ class NewQuizViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellAnswer", forIndexPath: indexPath)
         cell.textLabel?.text = myArray[indexPath.item]
+        cell.backgroundColor = UIColor.blueColor()
+        cell.layer.cornerRadius = 10.0
+        cell.clipsToBounds = true
+        cell.layer.borderWidth = 2.0
+        cell.layer.borderColor = UIColor.greenColor().CGColor
         return cell
         
     }

@@ -30,6 +30,8 @@ class OverviewTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateTableView()
+        self.title = "Quizes overview"
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main.png")!)
         
     }
 
@@ -43,6 +45,7 @@ class OverviewTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
+        cell!.backgroundColor = UIColor.clearColor()
         let label1 = cell?.viewWithTag(1) as! UILabel
         label1.text = quizes[indexPath.row].title
         let label2 = cell?.viewWithTag(2) as! UILabel

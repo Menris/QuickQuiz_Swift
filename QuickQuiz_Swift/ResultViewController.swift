@@ -15,7 +15,9 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.resultLabel.text = self.passedResult
+        self.resultLabel.text = "You have " + self.passedResult + " correct answers"
+        
+        self.resultLabel.textColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
     }
 

@@ -22,6 +22,7 @@ class ProfileTabViewController: UIViewController {
         super.viewDidLoad()
         SwiftLoading().showLoading()
         self.getUserInfo()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main.png")!)
         
         // Do any additional setup after loading the view.
     }
@@ -48,7 +49,7 @@ class ProfileTabViewController: UIViewController {
                 self.userName.text! = fUserName
             }
             
-            if let fUserEmail = snapshot.value!["email"] as? String {
+            if let fUserEmail = snapshot.value!["role"] as? String {
                 print(fUserEmail)
                 self.userEmail.text! = fUserEmail
             }

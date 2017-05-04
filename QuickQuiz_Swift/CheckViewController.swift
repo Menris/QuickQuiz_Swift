@@ -45,12 +45,19 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var label_quizTitle: UILabel!
     @IBOutlet weak var questionProgress: UILabel!
     @IBOutlet weak var questionText: UILabel!
+    var navBar:UINavigationBar=UINavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Check quiz"
+        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.alwaysBounceVertical = false
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         self.btn_next.layer.cornerRadius = 10.0
         self.btn_next.clipsToBounds = true
@@ -61,6 +68,13 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.btn_back.clipsToBounds = true
         self.btn_back.layer.borderWidth = 2
         self.btn_back.layer.borderColor = UIColor.blackColor().CGColor
+        
+        self.questionText.layer.cornerRadius = 10.0
+        self.questionText.clipsToBounds = true
+        self.questionText.layer.borderWidth = 2
+        self.questionText.layer.borderColor = UIColor.blackColor().CGColor
+        self.questionText.textColor = UIColor.whiteColor()
+        
         
         self.ref = FIRDatabase.database().reference()
 
@@ -119,15 +133,22 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.myArray.removeAll()
         self.ansArray.removeAll()
         self.correctAnswerText = ""
+        self.myAnswerText = ""
         
         self.questionProgress.text = String(questionNumber) + " / " + String(self.numberOfQuestions )
         
+        ref.child("userInformation").child(self.user!).child("myPassedQuizes").child(passedPIN).child("Question " + String(questionNumber)).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let myAnswer = snapshot.value!["myAnswer"] as? String {
+                    print (myAnswer)
+                    self.myAnswerText = myAnswer
+                }
+            })
         ref.child("Tests").child(passedPIN).child("Questions").child("Question " + String(questionNumber)).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             
             if let CurrentQuestion = snapshot.value!["question"] as? String {
                 print(CurrentQuestion)
                 self.questionText.text = CurrentQuestion
-                self.questionText.font = .systemFontOfSize(18)
+                self.questionText.font = .systemFontOfSize(25)
                 self.questionText.textAlignment = .Center
             }
             
@@ -137,62 +158,84 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             if let ansA = snapshot.value!["answerA"] as? String {
-                print (ansA)
                 if (self.correctAnswer == "A") {
                     self.correctAnswerText = ansA
+                } else if (self.myAnswerText == "A") {
+                    self.myAnswerText = ansA
                 }
                 self.ansArray.append("A")
                 self.myArray.append(ansA)
             }
             if let ansB = snapshot.value!["answerB"] as? String {
-                print (ansB)
                 if (self.correctAnswer == "B") {
                     self.correctAnswerText = ansB
+                } else if (self.myAnswerText == "B") {
+                    self.myAnswerText = ansB
                 }
                 self.ansArray.append("B")
                 self.myArray.append(ansB)
             }
             if let ansC = snapshot.value!["answerC"] as? String {
-                print (ansC)
                 if (self.correctAnswer == "C") {
                     self.correctAnswerText = ansC
+                } else if (self.myAnswerText == "C") {
+                    self.myAnswerText = ansC
                 }
                 self.ansArray.append("C")
                 self.myArray.append(ansC)
             }
             if let ansD = snapshot.value!["answerD"] as? String {
-                print (ansD)
                 if (self.correctAnswer == "D") {
                     self.correctAnswerText = ansD
+                } else if (self.myAnswerText == "D") {
+                    self.myAnswerText = ansD
                 }
                 self.ansArray.append("D")
                 self.myArray.append(ansD)
             }
             if let ansE = snapshot.value!["answerE"] as? String {
+                if (self.correctAnswer == "E") {
+                    self.correctAnswerText = ansE
+                }
                 self.ansArray.append("E")
                 self.myArray.append(ansE)
             }
             if let ansF = snapshot.value!["answerF"] as? String {
-                print (ansF)
+                if (self.correctAnswer == "F") {
+                    self.correctAnswerText = ansF
+                }
                 self.ansArray.append("F")
                 self.myArray.append(ansF)
             }
             if let ansG = snapshot.value!["answerG"] as? String {
+                if (self.correctAnswer == "G") {
+                    self.correctAnswerText = ansG
+                }
                 self.ansArray.append("G")
                 self.myArray.append(ansG)
             }
             if let ansH = snapshot.value!["answerH"] as? String {
+                if (self.correctAnswer == "H") {
+                    self.correctAnswerText = ansH
+                }
                 self.ansArray.append("H")
                 self.myArray.append(ansH)
             }
             if let ansI = snapshot.value!["answerI"] as? String {
+                if (self.correctAnswer == "I") {
+                    self.correctAnswerText = ansI
+                }
                 self.ansArray.append("I")
                 self.myArray.append(ansI)
             }
             if let ansJ = snapshot.value!["answerJ"] as? String {
+                if (self.correctAnswer == "J") {
+                    self.correctAnswerText = ansJ
+                }
                 self.ansArray.append("J")
                 self.myArray.append(ansJ)
             }
+            
             self.tableView.reloadData()
         })
         
@@ -213,7 +256,6 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myArray.count
     }
@@ -221,7 +263,10 @@ class CheckViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("QuestionsCell", forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.clearColor()
+        if ( self.myAnswerText == self.myArray[indexPath.item] ) {
+            cell.backgroundColor = UIColor.redColor()
+        }
         if (self.correctAnswerText == self.myArray[indexPath.item]) {
             cell.backgroundColor = UIColor.greenColor()
         }

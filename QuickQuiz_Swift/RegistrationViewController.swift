@@ -25,6 +25,7 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main.png")!)
         // Do any additional setup after loading the view.
     }
 
@@ -45,21 +46,30 @@ class RegistrationViewController: UIViewController {
     }
     @IBAction func createUser(sender: AnyObject) {
         
-        FIRAuth.auth()?.createUserWithEmail(Email.text!, password: Password.text!, completion: {
-            user, error in
-            if error != nil{
-                print("Failed")
-            }
-            else {
-                self.ref = FIRDatabase.database().reference()
-                let user = FIRAuth.auth()?.currentUser?.uid
-                self.ref.child("userInformation").child(user!).setValue([   "name": self.Username.text!,
-                                                                            "group": self.GroupName.text!,
-                                                                            "role": self.Role,
-                                                                            "email": self.Email.text!])
-                print("User Created")
-            }
-        })
+        
+        
+            FIRAuth.auth()?.createUserWithEmail(Email.text!, password: Password.text!, completion: {
+                user, error in
+                if error != nil{
+                    print("Failed")
+                    
+                    let submitAlert = UIAlertController(title:"Please enter full information", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+                    self.presentViewController(submitAlert, animated: true, completion: nil)
+                    
+                    submitAlert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) in
+                    }))
+                }
+                else {
+                    self.ref = FIRDatabase.database().reference()
+                    let user = FIRAuth.auth()?.currentUser?.uid
+                    self.ref.child("userInformation").child(user!).setValue([   "name": self.Username.text!,
+                                                                                "group": self.GroupName.text!,
+                                                                                "role": self.Role,
+                                                                                "email": self.Email.text!])
+                    print("User Created")
+                }
+            })
+        
         
     }
 

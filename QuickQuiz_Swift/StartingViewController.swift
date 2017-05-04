@@ -19,6 +19,7 @@ class StartingViewController: UIViewController {
     @IBOutlet weak var btn_enter: UIButton!
     @IBOutlet weak var btn_profile: UIButton!
     
+    @IBOutlet weak var btn_beacon: UIButton!
     
     var backgroundColors = [UIColor()]
     var backgroundLoop = 0
@@ -30,6 +31,11 @@ class StartingViewController: UIViewController {
         self.btn_enter.clipsToBounds = true
         self.btn_enter.layer.borderWidth = 2
         self.btn_enter.layer.borderColor = UIColor.blackColor().CGColor
+        
+        self.btn_beacon.layer.cornerRadius = 10.0
+        self.btn_beacon.clipsToBounds = true
+        self.btn_beacon.layer.borderWidth = 2
+        self.btn_beacon.layer.borderColor = UIColor.blackColor().CGColor
         
         self.btn_profile.layer.cornerRadius = 10.0
         self.btn_profile.clipsToBounds = true

@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back_main.png")!)
         // Do any additional setup after loading the view, typically from a nib.
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
                 self.presentViewController(controller, animated: true, completion: nil)
                 
             } else {
-                print("user is now signed in")
+                print("user is NOT signed in")
             }
             
         }
@@ -45,6 +46,12 @@ class ViewController: UIViewController {
             user, error in
             if error != nil{
                 print("Incorrect Email or Password")
+                ///show alert dialog for finishing quiz
+                let submitAlert = UIAlertController(title:"Incorrect email or password", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+                self.presentViewController(submitAlert, animated: true, completion: nil)
+                
+                submitAlert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) in
+                }))
             }
             else {
                 print("Success Login")
